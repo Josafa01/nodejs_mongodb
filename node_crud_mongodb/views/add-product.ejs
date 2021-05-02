@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('./partials/head.ejs') %>
+
+
+    <body>
+
+        <%- include('./partials/nav.ejs') %>
+
+            <div class="container">
+                <div class="row">
+
+                    <form class="col s12" action="/products" method="POST">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">shopping_cart</i>
+                                <input id="item_name" type="text" class="validate" name="name">
+                                <label for="item_name">Nome Produto</label>
+                            </div>
+                            <div class="input-field col s3">
+                                <i class="material-icons prefix">storage</i>
+                                <input id="stock" type="tel" class="validate" name="stock">
+                                <label for="stock">Qtd. Produto</label>
+                            </div>
+                            <div class="input-field col s3">
+                                <i class="material-icons prefix">request_quote</i>
+                                <input id="price" type="tel" class="validate" name="price">
+                                <label for="price">Preço Preçp</label>
+                            </div>
+                        </div>
+                        <button class="btn">Salvar</button>
+                    </form>
+                </div>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            <script>
+
+                document.addEventListener("DOMContentLoaded", function (event) {
+                    //do work
+                    M.updateTextFields();
+                });
+
+            </script>
+
+    </body>
+
+</html>

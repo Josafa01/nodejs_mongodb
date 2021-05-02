@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+    <body>
+        <%- include('./partials/nav.ejs') %>
+            <div class="container">
+                <h4>Detalhes do Produto</h4>
+                <table class="highlight responsive-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Estoque</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                <%= product.name %>
+                            </td>
+                            <td>R$<%= product.price %>
+                            </td>
+                            <td>
+                                <%= product.stock %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <a id="deleteBtn" class="delete btn" data-id="<%=product._id%>" href="">Exlcuir</a>
+            </div>
+            <script>
+                deleteBtn.onclick = function (e) {
+                    e.preventDefault();
+                    const id = deleteBtn.dataset.id
+                    // const id = e.target.getAttribute('data-id');
+                    console.log(id)
+                    const endpoint = `/products/${id}`;
+                    fetch(endpoint, {
+                        method: 'DELETE'
+                    }).then(res => res.json()).
+                        then(data => {
+                            console.log('data', data)
+                            window.location.href = data.redirect
+                        }).
+                        catch(err => console.log(err))
+                }
+
+            </script>
+
+    </body>
+
+</html>
